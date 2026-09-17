@@ -7,17 +7,19 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body data-whatsapp="0785522491" data-cliq="0785522491">
 
     <!-- الهيدر العصري -->
     <header class="main-header">
         <div class="header-overlay"></div>
         <div class="header-content">
-            <h1 class="restaurant-name">   قائمة الطعام</h1>
-               
+            <h1 class="restaurant-name">قائمة الطعام</h1>
+                
             <div class="search-box">
                 <i class="fa-solid fa-magnifying-glass search-icon"></i>
-<input type="text" id="searchInput" placeholder="ابحث عن صنف، سندويشة، أو مشروب...">        </div>
+                <input type="text" id="searchInput" placeholder="ابحث عن صنف، سندويشة، أو مشروب...">
+            </div>
+        </div>
     </header>
 
     <!-- شريط الأقسام السريع -->
@@ -74,8 +76,9 @@
                             <b>تفاصيل التحويل السريع (CliQ):</b>
                         </div>
                         <div class="cliq-details">
-                            <span>الرقم: <b id="cliqNum">0785522491</b></span>
-                            <button type="button" onclick="navigator.clipboard.writeText('0785522491'); alert('تم نسخ رقم CliQ بنجاح!');" class="copy-btn">
+                            <!-- النص مشفر للعرض، والرقم الحقيقي محفوظ في data-full-num -->
+                            <span>الرقم: <b id="cliqNum" data-full-num="0785522491">078***2491</b></span>
+                            <button type="button" onclick="copyCliqNumber()" class="copy-btn">
                                 <i class="fa-regular fa-copy"></i> نسخ
                             </button>
                         </div>

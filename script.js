@@ -3,8 +3,8 @@
 // ==========================================
 const DEFAULT_PRICE = 2.00;
 const DEFAULT_IMAGE = "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&q=80";
-const MY_PHONE_NUMBER = "962785522491"; // رقم الواتساب
-const CLIQ_ALIAS = "MYRESTAURANT";
+const MY_PHONE_NUMBER = "962785522491"; // رقم الواتساب الكامل للتحويل
+const CLIQ_NUMBER = "0785522491";       // رقم CliQ الكامل للنسخ
 
 // ==========================================
 // 2. قائمة العناصر (Menu Items)
@@ -209,9 +209,21 @@ function handlePaymentChange() {
         cliqNotice.style.display = "none";
     }
 }
- 
+
+// دالة نسخ رقم CliQ الكامل من الخلفية
+function copyCliqNumber() {
+    const cliqNumElem = document.getElementById("cliqNum");
+    const fullNumber = cliqNumElem ? (cliqNumElem.getAttribute("data-full-num") || CLIQ_NUMBER) : CLIQ_NUMBER;
+
+    navigator.clipboard.writeText(fullNumber).then(() => {
+        alert("تم نسخ رقم CliQ بنجاح!");
+    }).catch(() => {
+        alert("رقم التحويل هو: " + fullNumber);
+    });
+}
+
 // ==========================================
-// 5. إرسال الطلب عبر الواتساب (مُعدّلة)
+// 5. إرسال الطلب عبر الواتساب
 // ==========================================
 function sendToWhatsApp() {
     if (cart.length === 0) {
@@ -230,7 +242,6 @@ function sendToWhatsApp() {
         }
     }
 
-    // تم حذف السطر الأول والبدء بـ "تفاصيل الطلب:" مباشرةً
     let message = "*تفاصيل الطلب:*\n";
 
     let total = 0;
@@ -252,6 +263,7 @@ function sendToWhatsApp() {
 
     window.open(whatsappUrl, "_blank");
 }
+
 // ==========================================
 // 6. تهيئة البحث والمشروع
 // ==========================================
